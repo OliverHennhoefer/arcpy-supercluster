@@ -24,4 +24,5 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 - Calculate the mean position out of the points of one cluster to get more representative cluster loctions.
 - Add the possibility to fit additional attributes to the corresponding cluster (e.g. by calculating the mean of the points in one cluster)
 
-(Trial project. Implemented to get familiar with the python syntax and the ArcPy interface for ArcGIS.)
+![#f03c15](Trial project. Implemented to get familiar with the python syntax and the ArcPy interface for ArcGIS.)
+
