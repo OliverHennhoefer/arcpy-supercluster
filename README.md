@@ -7,7 +7,8 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 3 Form a cluster with the nearby points<br/>
 4 Randomly select a new point of the dataset that isn't part of a cluster and repeat the previos steps.
 
+# Result:<br/>
 ![alt text](https://github.com/OliverHennhoefer/ArcPy_Supercluster/blob/master/supercluster_result.PNG)
-
+*Note: Since the algorithm randomly chooses points for clustering, the results vary for every application of *'supercluster'*
 
 (Trial project. Implemented to get familiar with Python Syntax and the ArcPy interface for ArcGIS.)
