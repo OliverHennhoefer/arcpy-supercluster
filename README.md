@@ -14,7 +14,7 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 
 ## Result:<br/>
 - Blue Points: Original point data<br/>
-- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Result for a (cluster-)radius of 500 meters'
+- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Result for a (cluster-)radius of 500 meters
 - Yellow Points: Result for a (cluster-)radius of 1000 meters<br/>
 
 ![alt text](https://github.com/OliverHennhoefer/ArcPy_Supercluster/blob/master/supercluster_result.PNG)
