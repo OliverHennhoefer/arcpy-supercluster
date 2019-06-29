@@ -23,5 +23,5 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 *Note: Since the algorithm randomly chooses points for clustering, the results vary for every application of 'supercluster'*
 
 ## Futher Improvements:<br/>
-- Calculate the mean position out of the points of one cluster to get more representative cluster loctions.
-- Add the possibility to fit additional attributes to the corresponding cluster (e.g. by calculating the mean of the points in one cluster)
+- Calculate the mean position out of the points of one cluster to get more representative cluster locations.
+- Add the possibility to fit additional attributes to the corresponding cluster (e.g. by calculating the mean for the points of the same cluster)
