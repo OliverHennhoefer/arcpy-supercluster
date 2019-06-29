@@ -9,8 +9,9 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 
 # Result:<br/>
 - Blue Points: Original point data<br/>
-- Red Points: Result for a (cluster-)radius of 500 meters
-- Yellow Points: Result for a (cluster-)radius of 1000 meters
+- Red Points: Result for a (cluster-)radius of 500 meters<br/>
+- Yellow Points: Result for a (cluster-)radius of 1000 meters<br/>
+
 ![alt text](https://github.com/OliverHennhoefer/ArcPy_Supercluster/blob/master/supercluster_result.PNG)
 *Note: Since the algorithm randomly chooses points for clustering, the results vary for every application of 'supercluster'*
 
