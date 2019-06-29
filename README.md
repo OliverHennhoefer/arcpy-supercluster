@@ -15,4 +15,8 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 ![alt text](https://github.com/OliverHennhoefer/ArcPy_Supercluster/blob/master/supercluster_result.PNG)
 *Note: Since the algorithm randomly chooses points for clustering, the results vary for every application of 'supercluster'*
 
+# Futher Improvements:<br/>
+- Calculate the mean position out of the points of one cluster to get more representative cluster loctions.
+- Add the possibility to fit additional attributes to the corresponding cluster (e.g. by calculating the mean of the points in one cluster)
+
 (Trial project. Implemented to get familiar with the python syntax and the ArcPy interface for ArcGIS.)
