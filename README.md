@@ -13,9 +13,9 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 4. Randomly select a new point of the dataset that isn't part of a cluster and repeat the previos steps.
 
 ## Result:<br/>
-- ![#1589f0](https://placehold.it/15/1589f0/000000?text=+) Original point data </br>
-- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Result for a (cluster-)radius of 500 meters </br>
-- ![#fffa00](https://placehold.it/15/fffa00/000000?text=+) Result for a (cluster-)radius of 1000 meters </br>
+![#1589f0](https://placehold.it/15/1589f0/000000?text=+) Original point data </br>
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Result for a (cluster-)radius of 500 meters </br>
+![#fffa00](https://placehold.it/15/fffa00/000000?text=+) Result for a (cluster-)radius of 1000 meters </br>
 
 ![alt text](https://github.com/OliverHennhoefer/ArcPy_Supercluster/blob/master/supercluster_result.PNG)
 *Note: Since the algorithm randomly chooses points for clustering, the results vary for every application of 'supercluster'*
@@ -24,4 +24,4 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 - Calculate the mean position out of the points of one cluster to get more representative cluster loctions.
 - Add the possibility to fit additional attributes to the corresponding cluster (e.g. by calculating the mean of the points in one cluster)
 
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `(Trial project. Implemented to get familiar with the python syntax and the ArcPy interface for ArcGIS.)`
+&#x1F4D7;&#x1F34F; Trial project. Implemented to get familiar with the python syntax and the ArcPy interface for ArcGIS.
