@@ -1,6 +1,8 @@
 # ArcPy "Supercluster" algorithm for ArcGIS
 An Implementation of the simple and fast spatial clustering algorithm *'supercluster'* (e.g. used by *Mapbox*) for ArcGIS that efficiently  clusters huge datasets of points.
 
+&#x1F4D7; Trial project. Primarily implemented to get familiar with the python syntax and the ArcPy interface for ArcGIS.
+
 ## Parameters:<br/>
 - Input: FeatureClass (Point)<br/>
 - Input: Cluster radius (in meter)<br/>
@@ -23,5 +25,3 @@ An Implementation of the simple and fast spatial clustering algorithm *'superclu
 ## Futher Improvements:<br/>
 - Calculate the mean position out of the points of one cluster to get more representative cluster loctions.
 - Add the possibility to fit additional attributes to the corresponding cluster (e.g. by calculating the mean of the points in one cluster)
-
-&#x1F4D7; Trial project. Implemented to get familiar with the python syntax and the ArcPy interface for ArcGIS.
