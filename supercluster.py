@@ -1,0 +1,81 @@
+# -*- coding: cp1252 -*-
+import arcpy
+import os
+from math import *
+import random
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+def shapefileToList(inputFeature):
+    pointsList = []
+    with arcpy.da.SearchCursor(inputFeature, "SHAPE@XY") as Reader:
+        for feature in Reader:
+            x = feature[0][0]
+            y = feature[0][1]
+            point = Point(x, y)
+            pointsList.append(point)
+
+    return pointsList
+
+def deletePointsInCircle(centerPoint, pointsList, radius):
+    deletionList = []
+    for point in pointsList:
+        distance = sqrt((point.x-centerPoint.x)**2+(point.y-centerPoint.y)**2)
+        if distance < radius:
+            deletionList.append(pointsList.index(point))
+
+    for index in sorted(deletionList, reverse=True):
+        del pointsList[index]
+ 
+    return pointsList
+
+#Tool Parameters
+inputFeaturePoints = arcpy.GetParameter(0)
+outputFeaturePoints = arcpy.GetParameterAsText(2)
+radius = arcpy.GetParameterAsText(1)
+arcpy.AddMessage(inputFeaturePoints)
+
+
+arcpy.env.overWriteOutput = True
+sR = arcpy.Describe(inputFeaturePoints).spatialReference
+arcpy.env.outputCoordinateSystem = sR
+arcpy.env.workspace = os.path.dirname(outputFeaturePoints)
+
+#Stores points in list
+unclusteredPointsList = shapefileToList(inputFeaturePoints)
+
+#Actual Supercluster Algorithm
+radius = float(radius)
+clusterPointsList = []
+createClusters = True
+while createClusters: ###
+    randomCenterPoint = random.choice(unclusteredPointsList)
+    clusterPointsList.append(randomCenterPoint)
+    del unclusteredPointsList[unclusteredPointsList.index(randomCenterPoint)]
+    
+    unclusteredPointsList = deletePointsInCircle(randomCenterPoint, unclusteredPointsList, radius)
+    
+    if len(unclusteredPointsList) == 0:
+        createClusters = False
+
+#Create ArcGIS Point Features
+pointArray = arcpy.Array()
+for element in clusterPointsList:
+    arcPoint = arcpy.Point(element.x, element.y)
+    pointArray.add(arcPoint)
+
+#Create Output Feature-Class
+arcpy.CreateFeatureclass_management(os.path.dirname(outputFeaturePoints),\
+os.path.basename(outputFeaturePoints),"POINT",\
+template=inputFeaturePoints,\
+spatial_reference=sR)
+
+cursor = arcpy.da.InsertCursor(outputFeaturePoints, ['SHAPE@'])
+for points in pointArray:
+    cursor.insertRow([points])
+del cursor
+
+arcpy.SetParameter(1, outputFeaturePoints)
