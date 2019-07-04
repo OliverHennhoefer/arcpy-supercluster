@@ -1,4 +1,12 @@
 # -*- coding: cp1252 -*-
+'''
+Geomatics Masters Course: Web Feature Service
+Assignment II
+Authors:
+
+Implementation a Point Clustering Algorithm
+'''
+
 import arcpy
 import os
 from math import *
@@ -23,7 +31,11 @@ def shapefileToList(inputFeature):
 def deletePointsInCircle(centerPoint, pointsList, radius):
     deletionList = []
     for point in pointsList:
-        distance = sqrt((point.x-centerPoint.x)**2+(point.y-centerPoint.y)**2)
+	diff_x = point.x - centerPoint.x
+        diff_y = point.y - centerPoint.y
+        distance  = 100000* (sqrt((diff_x)**2 + (diff_y)**2))
+        arcpy.AddMessage(distance)
+        #distance = sqrt((point.x-centerPoint.x)**2+(point.y-centerPoint.y)**2)
         if distance < radius:
             deletionList.append(pointsList.index(point))
 
@@ -32,42 +44,35 @@ def deletePointsInCircle(centerPoint, pointsList, radius):
  
     return pointsList
 
-#Tool Parameters
+###########################################################
+###########################################################
 inputFeaturePoints = arcpy.GetParameter(0)
 outputFeaturePoints = arcpy.GetParameterAsText(2)
 radius = arcpy.GetParameterAsText(1)
-arcpy.AddMessage(inputFeaturePoints)
-
 
 arcpy.env.overWriteOutput = True
 sR = arcpy.Describe(inputFeaturePoints).spatialReference
 arcpy.env.outputCoordinateSystem = sR
 arcpy.env.workspace = os.path.dirname(outputFeaturePoints)
 
-#Stores points in list
 unclusteredPointsList = shapefileToList(inputFeaturePoints)
 
-#Actual Supercluster Algorithm
-radius = float(radius)
+radius = int(radius)
 clusterPointsList = []
 createClusters = True
-while createClusters: ###
+while createClusters == True:
     randomCenterPoint = random.choice(unclusteredPointsList)
     clusterPointsList.append(randomCenterPoint)
     del unclusteredPointsList[unclusteredPointsList.index(randomCenterPoint)]
-    
     unclusteredPointsList = deletePointsInCircle(randomCenterPoint, unclusteredPointsList, radius)
-    
     if len(unclusteredPointsList) == 0:
         createClusters = False
 
-#Create ArcGIS Point Features
 pointArray = arcpy.Array()
 for element in clusterPointsList:
     arcPoint = arcpy.Point(element.x, element.y)
     pointArray.add(arcPoint)
 
-#Create Output Feature-Class
 arcpy.CreateFeatureclass_management(os.path.dirname(outputFeaturePoints),\
 os.path.basename(outputFeaturePoints),"POINT",\
 template=inputFeaturePoints,\
