@@ -2,7 +2,7 @@
 '''
 Geomatics Masters Course: Web Feature Service
 Assignment II
-Authors:
+Author: Oliver Hennhoefer
 
 Implementation a Point Clustering Algorithm
 '''
