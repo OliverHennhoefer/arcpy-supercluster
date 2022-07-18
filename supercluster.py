@@ -32,7 +32,7 @@ def deletePointsInCircle(centerPoint, pointsList, radius):
     for point in pointsList:
 	diff_x = point.x - centerPoint.x
         diff_y = point.y - centerPoint.y
-        distance  = 100000* (sqrt((diff_x)**2 + (diff_y)**2))
+        distance = 100000 * sqrt(diff_x ** 2 + diff_y ** 2)
         arcpy.AddMessage(distance)
 
         if distance < radius:
