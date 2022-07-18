@@ -1,10 +1,9 @@
 # -*- coding: cp1252 -*-
 '''
-Geomatics Masters Course: Web Feature Service
-Assignment II
+Geomatics: Web Feature Service (Assignment)
 Author: Oliver Hennhoefer
 
-Implementation a Point Clustering Algorithm
+Simple Clustering Algorithm
 '''
 
 import arcpy
@@ -35,7 +34,7 @@ def deletePointsInCircle(centerPoint, pointsList, radius):
         diff_y = point.y - centerPoint.y
         distance  = 100000* (sqrt((diff_x)**2 + (diff_y)**2))
         arcpy.AddMessage(distance)
-        #distance = sqrt((point.x-centerPoint.x)**2+(point.y-centerPoint.y)**2)
+
         if distance < radius:
             deletionList.append(pointsList.index(point))
 
@@ -44,8 +43,8 @@ def deletePointsInCircle(centerPoint, pointsList, radius):
  
     return pointsList
 
-###########################################################
-###########################################################
+#' ----------------------------------------------------------------------------
+
 inputFeaturePoints = arcpy.GetParameter(0)
 outputFeaturePoints = arcpy.GetParameterAsText(2)
 radius = arcpy.GetParameterAsText(1)
